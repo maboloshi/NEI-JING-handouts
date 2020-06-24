@@ -1,0 +1,57 @@
+% -*- coding: utf-8 -*-
+%!TEX program = xelatex
+\ifx \allfiles \undefined
+\documentclass[12pt]{ctexbook}%draft,
+\input{preamble}
+\begin{document}
+\fi
+\begin{titlepage}
+	\begin{center}
+		\setlength\unitlength{.8\linewidth}
+		\vspace*{\baselineskip}
+		{\ziju{1.5}\yihao \bfseries 21\hspace{1.3em}世纪课程教材}\\[.5\baselineskip]
+		{\ziju{.9}\xiaoyihao 全国高等中医药院校教材\\[.5\baselineskip]
+		供中医类专业用}\\
+		\vspace*{2\baselineskip}
+		\rule{\unitlength}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+		\rule{\unitlength}{0.4pt}\\[\baselineskip]
+		{\fontsize{58pt}{\baselineskip}\selectfont\bfseries 内\ 经\ 讲\ 义}\\[\baselineskip]
+		\rule{\unitlength}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+		\rule{\unitlength}{1.6pt}\\[\baselineskip]
+		\vspace*{2.3\baselineskip}
+		{%
+			\let\tabular\oldtabular
+			\renewcommand\arraystretch{.9}
+			\large
+			\begin{tabular}{>{\bfseries}ccc}
+				主\ 编 & 王洪图 & \\
+				副主编 & 赵明山 & 邱辛凡\\
+				主\ 审 & 李今庸 & 程士德\\
+				编\ 者  & \multicolumn{2}{c}{（以姓氏笔画为序）} \\
+			\end{tabular}
+
+			\begin{tabular}{ll}
+				王贵臣（长春中医学院）  & 周发祥（河南中医学院）  \\
+				王洪图（北京中医药大学） & 周国琪（上海中医药大学） \\
+				叶庆莲（广西中医学院）  & 杨旭（黑龙江中医药大学） \\
+				邱幸凡（湖北中医学院）  & 赵明山（辽宁中医学院）  \\
+				吴弥漫（广州中医药大学） & 段延平（首都医科大学）  \\
+				张登本（陕西中医学院）  & 烟建华（北京中医药大学） \\
+				张其成（北京中医药大学） & 翟双庆（北京中医药大学）\\
+			\end{tabular}
+
+			\begin{tabular}{>{\bfseries}cc}
+				学术秘书 & 翟双庆（兼）\\
+			\end{tabular}
+		}
+
+%		\vspace*{\baselineskip}
+%		\Large
+%		\textbf{重排版}\ 沙漠之子\\
+%		\today\\
+	\end{center}
+\end{titlepage}
+\thispagestyle{empty}
+\ifx \allfiles \undefined
+\end{document}
+\fi

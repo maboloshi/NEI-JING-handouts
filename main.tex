@@ -1,0 +1,67 @@
+% -*- coding: utf-8 -*-
+%!TEX program = xelatex
+\documentclass[12pt]{ctexbook}
+%\documentclass[draft,12pt]{ctexbook}   % draft草稿模式下,bookmark会被忽略 draft,
+\def\allfiles{}
+\input{preamble}
+\begin{document}
+%\pagecolor{mybackgroundcolor}  % 启用全文背景色
+\watermarkoff                   % 关闭全文水印
+\clearpage
+
+%------------------封面页------------------
+\pdfbookmark[-2]{《内经讲义》}{title} % 将文章标题添加到pdf书签中,且最高层
+\input{titlepage}
+
+%------------------目录页------------------
+\frontmatter            % 开始正文之前的部分
+\pagenumbering{Roman}   % 正文之前的页码用大写罗马字母编号.
+\pagestyle{special}{%
+	\small
+	\pdfbookmark{目录}{Contents}       % 将目录项添加到pdf书签中
+	\tableofcontents
+		\let\cleardoublepage\clearpage  % 去掉空白页
+	\pdfbookmark[1]{表格}{lot}
+	\listoftables
+		%\let\cleardoublepage\clearpage % 去掉空白页
+		\let\cleardoublepage\relax      % 表格目录和插图目录放在同一页
+	\pdfbookmark[1]{插图}{lof}
+	\listoffigures
+}
+
+%------------------正文页------------------
+\mainmatter             % 正文开始(页码从新计数)
+\pagestyle{main}
+\part{概论}             % 上篇
+\include{chapter1-1}    % 第一章《黄帝内经》的成书与流传
+\include{chapter1-2}    % 第二章《黄帝内经》的学术体系
+
+\part{经文选读}         % 中篇
+\pagestyle{main2}
+%\CTEXsetup[number={\chinese{section}},name={第,節}]{section}
+\ctexset{section={number={\chinese{section}},name={第,節}}}
+\include{chapter2-1}    % 第一章 阴阳五行
+\include{chapter2-2}    % 第二章 藏象
+\include{chapter2-3}    % 第三章 经络
+\include{chapter2-4}    % 第四章 病因病机
+\include{chapter2-5}    % 第五章 病症
+\include{chapter2-6}    % 第六章 诊法
+\include{chapter2-7}    % 第七章 论治
+\include{chapter2-8}    % 第八章 养生
+
+\part{《黄体内经》与医学相关专题研究}  % 下篇
+\pagestyle{main}
+%\CTEXsetup[number={\chinese{section}},name={第,节}]{section}
+\ctexset{section={number={\chinese{section}},name={第,节}}}
+\include{chapter3-1}    %《黄帝内经》的医学哲学思想
+\include{chapter3-2}    %《黄帝内经》的天文历法医学思想
+\include{chapter3-3}    %《黄帝内经》的地理医学与气象医学思想
+\include{chapter3-4}    %《黄帝内经》的时间医学思想
+\include{chapter3-5}    %《黄帝内经》的体质医学思想
+\include{chapter3-6}    %《黄帝内经》的心理医学思想
+\include{chapter3-7}    %《黄帝内经》的社会医学思想
+\include{chapter3-8}    % 五运六气学说
+
+%------------------附录页------------------
+\include{Appendix}
+\end{document}
