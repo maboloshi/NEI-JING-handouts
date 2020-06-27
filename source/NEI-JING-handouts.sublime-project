@@ -1,0 +1,31 @@
+{
+	"folders":
+	[
+		{
+			"path": "../",
+			//"file_include_patterns": [],
+			//"file_exclude_patterns": ["*.aux","*.log","*.out","*.toc","*.synctex*"],
+			"file_exclude_patterns": ["*.synctex*"],
+			//"folder_exclude_patterns": ["tmp"],
+		}
+	],
+	"settings":
+	{
+		"tab_size": 2,
+		"translate_tabs_to_spaces": true,
+		// 显示被可视字符包围的空白字符
+		"draw_white_space": ["selection", "enclosed"],
+	},
+	"build_systems":
+	[
+		{
+			"osx":  {
+				"name": "XeLatex",
+				//"shell_cmd": "ls -l",
+				"file_patterns": ["*.tex"],
+				//"cmd": ["my_command", "-D", "$file"]
+				//"keyfiles": ["Makefile"],
+			}
+		}
+	]
+}
