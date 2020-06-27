@@ -11,22 +11,25 @@
 
 %===================自定义颜色=====================
 \usepackage{xcolor}
-	\definecolor{mybackgroundcolor}{cmyk}{0.03,0.03,0.18,0}
-	\definecolor{myblue}{rgb}{0,0.2,0.6}
+  \definecolor{mybackgroundcolor}{cmyk}{0.03,0.03,0.18,0}
+  \definecolor{myblue}{rgb}{0,0.2,0.6}
 
 %====================字体设置======================
 %--------------------中文字体----------------------
 \input{fontset} %中文字体及字号设置
 \xeCJKDeclareSubCJKBlock{SIP}{
-	"20000 -> "2A6DF,   % CJK Unified Ideographs Extension B
-	"2A700 -> "2B73F,   % CJK Unified Ideographs Extension C
-	"2B740 -> "2B81F    % CJK Unified Ideographs Extension D
+  "20000 -> "2A6DF,   % CJK Unified Ideographs Extension B
+  "2A700 -> "2B73F,   % CJK Unified Ideographs Extension C
+  "2B740 -> "2B81F    % CJK Unified Ideographs Extension D
 }
 %\setCJKmainfont[SIP={[AutoFakeBold=1.8,Color=red]Sun-ExtB},BoldFont=黑体]{宋体}    % 衬线字体 缺省中文字体
 
-\setCJKmainfont[Path=fonts/,
-				SIP={[Path=fonts/,AutoFakeBold=1.8,Color=red]simsunb.ttf},
-				BoldFont={simhei.ttf}]{simsun.ttc}
+\setCJKmainfont{simsun.ttc}[
+  Path=fonts/,
+  SIP={[Path=fonts/,AutoFakeBold=1.8,Color=red]simsunb.ttf},
+  BoldFont=simhei.ttf
+]
+
 %SimSun-ExtB
 %Sun-ExtB
 %AutoFakeBold：自动伪粗,即正文使用\bfseries时生僻字使用伪粗体；
@@ -37,122 +40,126 @@
 %\setCJKmonofont{STFangsong}    %中文等宽字体
 
 %--------------------英文字体----------------------
-\setmainfont[Path=fonts/,
-			 BoldFont={simhei.ttf}]{simsun.ttc}
+\setmainfont{simsun.ttc}[
+  Path=fonts/,
+  BoldFont=simhei.ttf
+]
 %\setmainfont[BoldFont=黑体]{宋体}  %缺省英文字体
 %\setsansfont
 %\setmonofont
 
 %===================目录分栏设置====================
-\usepackage[toc,lof,lot]{multitoc}      % 目录（含目录、表格目录、插图目录）分栏设置
-	%\renewcommand*{\multicolumntoc}{3} % toc分栏数设置,默认为两栏(\multicolumnlof,\multicolumnlot)
-	%\setlength{\columnsep}{1.5cm}      % 调整分栏间距
-	\setlength{\columnseprule}{0.2pt}   % 调整分栏竖线的宽度
+\usepackage[toc,lof,lot]{multitoc}    % 目录（含目录、表格目录、插图目录）分栏设置
+  %\renewcommand*{\multicolumntoc}{3} % toc分栏数设置,默认为两栏(\multicolumnlof,\multicolumnlot)
+  %\setlength{\columnsep}{1.5cm}      % 调整分栏间距
+  \setlength{\columnseprule}{0.2pt}   % 调整分栏竖线的宽度
 
 %==================章节格式设置====================
 \setcounter{secnumdepth}{3} % 章节等编号深度 3:子子节\subsubsection
 \setcounter{tocdepth}{2}    % 目录显示等度 2:子节
 
 \xeCJKsetup{%
-	CJKecglue=\hspace{0.15em},      % 调整中英（含数字）间的字间距
-	%CJKmath=true,                  % 在数学环境中直接输出汉字(不需要\text{})
-	AllowBreakBetweenPuncts=true,   % 允许标点中间断行,减少文字行溢出
+  CJKecglue=\hspace{0.15em},      % 调整中英（含数字）间的字间距
+  %CJKmath=true,                  % 在数学环境中直接输出汉字(不需要\text{})
+  AllowBreakBetweenPuncts=true,   % 允许标点中间断行,减少文字行溢出
 }
 
 \ctexset{%
-	part={
-		name={,篇},
-		number=\SZX{part},
-		format={\chuhao\bfseries\centering},
-		nameformat={},titleformat={}
-	},
-	section={
-		number={\chinese{section}},
-		name={第,节}
-	},
-	subsection={
-		number={\chinese{subsection}、},
-		aftername={\hspace{-0.01em}}
-	},
-	subsubsection={
-		number={（\chinese{subsubsection}）},
-		aftername={\hspace {-0.01em}},
-		beforeskip={1.3ex minus .8ex},
-		afterskip={1ex minus .6ex},
-		indent={\parindent}
-	},
-	paragraph={
-		beforeskip=.1\baselineskip,
-		indent={\parindent}
-	}
+  part={
+    name={,篇},
+    number=\SZX{part},
+    format={\chuhao\bfseries\centering},
+    nameformat={},titleformat={}
+  },
+  section={
+    number={\chinese{section}},
+    name={第,节}
+  },
+  subsection={
+    number={\chinese{subsection}、},
+    aftername={\hspace{-0.01em}}
+  },
+  subsubsection={
+    number={（\chinese{subsubsection}）},
+    aftername={\hspace {-0.01em}},
+    beforeskip={1.3ex minus .8ex},
+    afterskip={1ex minus .6ex},
+    indent={\parindent}
+  },
+  paragraph={
+    beforeskip=.1\baselineskip,
+    indent={\parindent}
+  }
 }
 
 \newcommand*\SZX[1]{%
-	\ifcase\value{#1}%
-		\or 上%
-		\or 中%
-		\or 下%
-	\fi
+  \ifcase\value{#1}%
+    \or 上%
+    \or 中%
+    \or 下%
+  \fi
 }
 
 %====================页眉设置======================
 \usepackage{titleps}%或者\usepackage{titlesec},titlesec包含titleps
 \newpagestyle{special}[\small\sffamily]{
-	%\setheadrule{.1pt}
-	\headrule
-	\sethead[\usepage][][\chaptertitle]
-	{\chaptertitle}{}{\usepage}
+  %\setheadrule{.1pt}
+  \headrule
+  \sethead[\usepage][][\chaptertitle]
+  {\chaptertitle}{}{\usepage}
 }
 
 \newpagestyle{main}[\small\sffamily]{
-	\headrule
-	%\sethead[\usepage][][第\thechapter 章\quad\chaptertitle]
+  \headrule
+  %\sethead[\usepage][][第\thechapter 章\quad\chaptertitle]
 %  {\thesection\quad\sectiontitle}{}{\usepage}}
-	\sethead[\usepage][][第\chinese{chapter}章\quad\chaptertitle]
-	{第\chinese{section}节\quad\sectiontitle}{}{\usepage}
+  \sethead[\usepage][][第\chinese{chapter}章\quad\chaptertitle]
+  {第\chinese{section}节\quad\sectiontitle}{}{\usepage}
 }
 
 \newpagestyle{main2}[\small\sffamily]{
-	\headrule
-	\sethead[\usepage][][第\chinese{chapter}章\quad\chaptertitle]
-	{第\chinese{section}節\quad\sectiontitle}{}{\usepage}
+  \headrule
+  \sethead[\usepage][][第\chinese{chapter}章\quad\chaptertitle]
+  {第\chinese{section}節\quad\sectiontitle}{}{\usepage}
 }
 
 %================ PDF 书签设置=====================
-\usepackage[depth=2,        % 书签深度 2:子节
-			open,           % 默认展开书签
-			openlevel=2,    % 展开书签深度 2:子节
-			numbered,       % 显示编号
-			atend,
-			]{bookmark}     % 相比hyperref，该宏包大多数时候只需要编译一次，
-							% 而且书签的颜色和字体也可以定制。
-							% 比hyperref 更专业 （自动加载hyperref）
+\usepackage{bookmark}[
+  depth=2,        % 书签深度 2:子节
+  open,           % 默认展开书签
+  openlevel=2,    % 展开书签深度 2:子节
+  numbered,       % 显示编号
+  atend,
+]
+  % 相比hyperref，bookmark宏包大多数时候只需要编译一次，
+  % 而且书签的颜色和字体也可以定制。
+  % 比hyperref 更专业 （自动加载hyperref）
 
 %\bookmarksetup{italic,bold,color=blue} % 书签字体斜体/粗体/颜色设置
 
 %------------重置每篇章计数器，必须在hyperref/bookmark之后------------
 \makeatletter
-	\@addtoreset{chapter}{part}
+  \@addtoreset{chapter}{part}
 \makeatother
 
 %------------hyperref 超链接设置------------------------
 \hypersetup{%
-	pdfencoding=auto,   % 解决新版ctex,引起hyperref UTF-16预警
-	colorlinks=true,    % 注释掉此项则交叉引用为彩色边框true/false
-	pdfborder=001,      % 注释掉此项则交叉引用为彩色边框
-	citecolor=teal,
-	linkcolor=myblue,
-	urlcolor=black,
-	%psdextra,          % 配合使用bookmark宏包,可以直接在pdf 书签中显示数学公式
+  pdfencoding=auto,   % 解决新版ctex,引起hyperref UTF-16预警
+  colorlinks=true,    % 注释掉此项则交叉引用为彩色边框true/false
+  pdfborder=001,      % 注释掉此项则交叉引用为彩色边框
+  citecolor=teal,
+  linkcolor=myblue,
+  urlcolor=black,
+  %psdextra,          % 配合使用bookmark宏包,可以直接在pdf 书签中显示数学公式
 }
 
 %------------PDF 属性设置------------------------------
 \hypersetup{%
-	pdfkeywords={黄帝内经,内经,内经讲义,21世纪课程教材},    % 关键词
-	%pdfsubject={latex},        % 主题
-	pdfauthor={主编：王洪图}, % 作者
-	pdftitle={内经讲义},        % 标题
-	%pdfcreator={texlive2011}   % pdf创建器
+  pdfkeywords={黄帝内经,内经,内经讲义,21世纪课程教材},    % 关键词
+  %pdfsubject={latex},        % 主题
+  pdfauthor={主编：王洪图},   % 作者
+  pdftitle={内经讲义},        % 标题
+  %pdfcreator={texlive2011}   % pdf创建器
 }
 
 %------------PDF 加密----------------------------------
@@ -166,43 +173,48 @@
 %pdftk inputfile.pdf output outputfile.pdf encrypt_128bit owner_pw yourownerpw user_pw youruserpw
 
 %=============自定义环境、列表及列表设置================
+% 标题
 \def\biaoti#1{\vspace{1.7ex plus 3ex minus .2ex}{\bfseries #1}}%\noindent\hei
+% 小标题
 \def\xiaobt#1{{\bfseries #1}}
+% 小结
 \def\xiaojie {\vspace{1.8ex plus .3ex minus .3ex}\centerline{\large\bfseries 小\ \ 结}\vspace{.1\baselineskip}}
+% 作者
 \def\zuozhe#1{\rightline{\bfseries #1}}
 
 \newcounter{yuanwen}    % 新计数器 yuanwen
 \newcounter{jiaozhu}    % 新计数器 jiaozhu
 
 \newenvironment{yuanwen}[2][【原文】]{%
-	%\biaoti{#1}\par
-	\stepcounter{yuanwen}   % 计数器 yuanwen+1
-	\bfseries #2}
-	{}
+  %\biaoti{#1}\par
+  \stepcounter{yuanwen}   % 计数器 yuanwen+1
+  \bfseries #2}
+  {}
 
 \usepackage{enumitem}
 \newenvironment{jiaozhu}[1][【校注】]{%
-	%\biaoti{#1}\par
-	\stepcounter{jiaozhu}   % 计数器 jiaozhu+1
-	\begin{enumerate}[%
-					label=\mylabel{\arabic*}{\circledctr*},before=\small,fullwidth,%
-					itemindent=\parindent,listparindent=\parindent,%labelsep=-1pt,%labelwidth=0em,
-					itemsep=0pt,topsep=0pt,partopsep=0pt,parsep=0pt]}
-	{\end{enumerate}}
+  %\biaoti{#1}\par
+  \stepcounter{jiaozhu}   % 计数器 jiaozhu+1
+  \begin{enumerate}[%
+    label=\mylabel{\arabic*}{\circledctr*},before=\small,fullwidth,%
+    itemindent=\parindent,listparindent=\parindent,%labelsep=-1pt,%labelwidth=0em,
+    itemsep=0pt,topsep=0pt,partopsep=0pt,parsep=0pt
+  ]}
+  {\end{enumerate}}
 
 %===================注解与原文相互跳转====================
 %----------------第1部分 设置相互跳转锚点-----------------
 \makeatletter
-	\protected\def\mylabel#1#2{% 注解-->原文
-		\hyperlink{back:\theyuanwen:#1}{\Hy@raisedlink{\hypertarget{\thejiaozhu:#1}{}}#2}}
+  \protected\def\mylabel#1#2{% 注解-->原文
+    \hyperlink{back:\theyuanwen:#1}{\Hy@raisedlink{\hypertarget{\thejiaozhu:#1}{}}#2}}
 
-	\protected\def\myref#1#2{% 原文-->注解
-		\hyperlink{\theyuanwen:#1}{\Hy@raisedlink{\hypertarget{back:\theyuanwen:#1}{}}#2}}
-	%此处\theyuanwen:#1实际指thejiaozhu:#1,只是\thejiaozhu计数器还没更新,故使用\theyuanwen计数器代替
+  \protected\def\myref#1#2{% 原文-->注解
+    \hyperlink{\theyuanwen:#1}{\Hy@raisedlink{\hypertarget{back:\theyuanwen:#1}{}}#2}}
+  %此处\theyuanwen:#1实际指thejiaozhu:#1,只是\thejiaozhu计数器还没更新,故使用\theyuanwen计数器代替
 \makeatother
 
 \protected\def\myjzref#1{% 脚注中的引用(引用到原文)
-	\hyperlink{\theyuanwen:#1}{\circlednum{#1}}}
+  \hyperlink{\theyuanwen:#1}{\circlednum{#1}}}
 
 \def\sb#1{\myref{#1}{\textsuperscript{\circlednum{#1}}}}    % 带圈数字上标
 
@@ -210,45 +222,45 @@
 \def\HyperRaiseLinkDefault{.8\baselineskip} %调整锚点垂直距离
 %\let\oldhypertarget\hypertarget
 %\makeatletter
-%   \def\hypertarget#1#2{\Hy@raisedlink{\oldhypertarget{#1}{#2}}}
+%  \def\hypertarget#1#2{\Hy@raisedlink{\oldhypertarget{#1}{#2}}}
 %\makeatother
 
 %====================带圈数字列表标头====================
-%\newfontfamily\circledfont[Path = fonts/]{meiryo.ttc}  % 日文字体，明瞭体
-\newfontfamily\circledfont{Meiryo}  % 日文字体，明瞭体
+\newfontfamily\circledfont[Path = fonts/]{meiryo.ttc}  % 日文字体，明瞭体
+%\newfontfamily\circledfont{Meiryo}  % 日文字体，明瞭体
 
 \protected\def\circlednum#1{{\makexeCJKinactive\circledfont\textcircled{#1}}}
 
 \newcommand*\circledctr[1]{%
-	\expandafter\circlednum\expandafter{\number\value{#1}}}
+  \expandafter\circlednum\expandafter{\number\value{#1}}}
 \AddEnumerateCounter*\circledctr\circlednum{1}
 
 % 参考自:http://bbs.ctex.org/forum.php?mod=redirect&goto=findpost&ptid=78709&pid=460496&fromuid=40353
 
 %======================插图/tikz图========================
 \usepackage{graphicx,subcaption,wrapfig}    % 图,subcaption含子图功能代替subfig,图文混排
-	\graphicspath{{img/}}                   % 设置图片文件路径
+  \graphicspath{{img/}}                     % 设置图片文件路径
 
 \def\pgfsysdriver{pgfsys-xetex.def}         % 设置tikz的驱动引擎
 \usepackage{tikz}
-	\usetikzlibrary{calc,decorations.text,arrows,positioning}
+  \usetikzlibrary{calc,decorations.text,arrows,positioning}
 
 %---------设置tikz图片默认格式（字号、行间距、单元格高度）-------
 \let\oldtikzpicture\tikzpicture
 \renewcommand{\tikzpicture}{%
-	\small
-	\renewcommand{\baselinestretch}{0.2}
-	\linespread{0.2}
-	\oldtikzpicture
+  \small
+  \renewcommand{\baselinestretch}{0.2}
+  \linespread{0.2}
+  \oldtikzpicture
 }
 
 %=========================表格相关===============================
 \usepackage{%
-	multirow,                   % 单元格纵向合并
-	array,makecell,longtable,   % 表格功能加强,tabu的依赖
-	tabu-last-fix,              % "强大的表格工具" 本地修复版
-	diagbox,                    % 表头斜线
-	threeparttable,             % 表格内脚注(需打补丁支持tabu,longtabu)
+  multirow,                   % 单元格纵向合并
+  array,makecell,longtable,   % 表格功能加强,tabu的依赖
+  tabu-last-fix,              % "强大的表格工具" 本地修复版
+  diagbox,                    % 表头斜线
+  threeparttable,             % 表格内脚注(需打补丁支持tabu,longtabu)
 }
 
 %----------给threeparttable打补丁用于tabu,longtabu--------------
@@ -256,32 +268,32 @@
 \usepackage{xpatch}
 
 \makeatletter
-	\chardef\TPT@@@asteriskcatcode=\catcode`*
-	\catcode`*=11
-	\xpatchcmd{\threeparttable}
-		{\TPT@hookin{tabular}}
-		{\TPT@hookin{tabular}\TPT@hookin{tabu}}
-		{}{}
-	\catcode`*=\TPT@@@asteriskcatcode
+  \chardef\TPT@@@asteriskcatcode=\catcode`*
+  \catcode`*=11
+  \xpatchcmd{\threeparttable}
+    {\TPT@hookin{tabular}}
+    {\TPT@hookin{tabular}\TPT@hookin{tabu}}
+    {}{}
+  \catcode`*=\TPT@@@asteriskcatcode
 \makeatother
 
 %------------设置表格默认格式（字号、行间距、单元格高度）------------
 \let\oldtabular\tabular
 \renewcommand{\tabular}{%
-	\renewcommand\baselinestretch{0.9}\small    % 设置行间距和字号
-	\renewcommand\arraystretch{1.5}             % 调整单元格高度
-	%\renewcommand\multirowsetup{\centering}
-	\oldtabular
+  \renewcommand\baselinestretch{0.9}\small    % 设置行间距和字号
+  \renewcommand\arraystretch{1.5}             % 调整单元格高度
+  %\renewcommand\multirowsetup{\centering}
+  \oldtabular
 }
 %设置行间距，且必须放在字号设置前 否则无效
 %或者使用\fontsize{<size>}{<baseline>}\selectfont 同时设置字号和行间距
 
 \let\oldtabu\tabu
 \renewcommand{\tabu}{%
-	\renewcommand\baselinestretch{0.9}\small    % 设置行间距和字号
-	\renewcommand\arraystretch{1.8}             % 调整单元格高度
-	%\renewcommand\multirowsetup{\centering}
-	\oldtabu
+  \renewcommand\baselinestretch{0.9}\small    % 设置行间距和字号
+  \renewcommand\arraystretch{1.8}             % 调整单元格高度
+  %\renewcommand\multirowsetup{\centering}
+  \oldtabu
 }
 
 %------------模仿booktabs宏包的三线宽度设置---------------
@@ -300,9 +312,9 @@
 \renewcommand\thetable {\arabic{section}-\arabic{table}}
 
 \usepackage{caption}
-	\captionsetup{font=small,}
-	\captionsetup[table] {labelfont=bf,textfont=bf,belowskip=3pt,aboveskip=0pt} %仅表格 top
-	\captionsetup[figure]{belowskip=0pt,aboveskip=3pt}  %仅图片 below
+  \captionsetup{font=small,}
+  \captionsetup[table] {labelfont=bf,textfont=bf,belowskip=3pt,aboveskip=0pt} %仅表格 top
+  \captionsetup[figure]{belowskip=0pt,aboveskip=3pt}  %仅图片 below
 
 %\setlength{\abovecaptionskip}{3pt}
 %\setlength{\belowcaptionskip}{3pt} %图、表题目上下的间距
@@ -319,17 +331,17 @@
 \renewcommand\AtPageCenter[1]{\parbox[b][\paperheight]{\paperwidth}{\vfill\centering#1\vfill}}
 
 \newcommand{\watermark}[3]{%
-	\AddToShipoutPictureBG{%
-		\AtPageCenter{%
-			\tikz\node[%
-				overlay,
-				text=red!50,
-				%font=\sffamily\bfseries,
-				rotate=#1,
-				scale=#2]
-				{#3};
-		}
-	}
+  \AddToShipoutPictureBG{%
+    \AtPageCenter{%
+      \tikz\node[%
+        overlay,
+        text=red!50,
+        %font=\sffamily\bfseries,
+        rotate=#1,
+        scale=#2
+      ]{#3};
+    }
+  }
 }
 
 \newcommand{\watermarkoff}{\ClearShipoutPictureBG}
@@ -340,8 +352,8 @@
 \usepackage{schemata}
 
 \xpatchcmd{\schema}
-	{1.44265ex}{-1ex}
-	{}{}
+  {1.44265ex}{-1ex}
+  {}{}
 
 \newcommand\SC[2] {\schema{\schemabox{#1}}{\schemabox{#2}}}
 \newcommand\SCh[4]{\Schema{#1}{#2}{\schemabox{#3}}{\schemabox{#4}}}

@@ -17,16 +17,16 @@
 \frontmatter            % 开始正文之前的部分
 \pagenumbering{Roman}   % 正文之前的页码用大写罗马字母编号.
 \pagestyle{special}{%
-	\small
-	\pdfbookmark{目录}{Contents}       % 将目录项添加到pdf书签中
-	\tableofcontents
-		\let\cleardoublepage\clearpage  % 去掉空白页
-	\pdfbookmark[1]{表格}{lot}
-	\listoftables
-		%\let\cleardoublepage\clearpage % 去掉空白页
-		\let\cleardoublepage\relax      % 表格目录和插图目录放在同一页
-	\pdfbookmark[1]{插图}{lof}
-	\listoffigures
+  \small
+  \pdfbookmark{目录}{Contents}      % 将目录项添加到pdf书签中
+  \tableofcontents
+    \let\cleardoublepage\clearpage  % 去掉空白页
+  \pdfbookmark[1]{表格}{lot}
+  \listoftables
+    %\let\cleardoublepage\clearpage % 去掉空白页
+    \let\cleardoublepage\relax      % 表格目录和插图目录放在同一页
+  \pdfbookmark[1]{插图}{lof}
+  \listoffigures
 }
 
 %------------------正文页------------------
