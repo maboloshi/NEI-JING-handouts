@@ -196,7 +196,8 @@
   %\biaoti{#1}\par
   \stepcounter{jiaozhu}   % 计数器 jiaozhu+1
   \begin{enumerate}[%
-    label=\mylabel{\arabic*}{\circledctr*},before=\small,fullwidth,%
+    %label=\mylabel{\arabic*}{\circledctr*},before=\small,fullwidth,    % 带圈数字 列标
+    label=\mylabel{\arabic*}{\arabic*.},before=\small,fullwidth,        % 数字 列标
     itemindent=\parindent,listparindent=\parindent,%labelsep=-1pt,%labelwidth=0em,
     itemsep=0pt,topsep=0pt,partopsep=0pt,parsep=0pt
   ]}
@@ -213,10 +214,13 @@
   %此处\theyuanwen:#1实际指thejiaozhu:#1,只是\thejiaozhu计数器还没更新,故使用\theyuanwen计数器代替
 \makeatother
 
-\protected\def\myjzref#1{% 脚注中的引用(引用到原文)
-  \hyperlink{\theyuanwen:#1}{\circlednum{#1}}}
+\protected\def\myjzref#1{% 注解和正文中的引用(引用到原文)
+  %\hyperlink{\theyuanwen:#1}{\circlednum{#1}}}               % 带圈数字
+  \hyperlink{\theyuanwen:#1}{\textsuperscript{[#1]}}}         % 带[]数字
 
-\def\sb#1{\myref{#1}{\textsuperscript{\circlednum{#1}}}}    % 带圈数字上标
+%\def\sb#1{\myref{#1}{\textsuperscript{\circlednum{#1}}}}    % 带圈数字上标
+\def\sb#1{\myref{#1}{\textsuperscript{[#1]}}}                % []上标
+
 
 %----------------第2部分 调整锚点垂直距离-----------------
 \def\HyperRaiseLinkDefault{.8\baselineskip} %调整锚点垂直距离
@@ -225,17 +229,17 @@
 %  \def\hypertarget#1#2{\Hy@raisedlink{\oldhypertarget{#1}{#2}}}
 %\makeatother
 
-%====================带圈数字列表标头====================
-\newfontfamily\circledfont[Path = fonts/]{meiryo.ttc}  % 日文字体，明瞭体
-%\newfontfamily\circledfont{Meiryo}  % 日文字体，明瞭体
+% %====================带圈数字列表标头====================
+% \newfontfamily\circledfont[Path = fonts/]{meiryo.ttc}  % 日文字体，明瞭体
+% %\newfontfamily\circledfont{Meiryo}  % 日文字体，明瞭体
 
-\protected\def\circlednum#1{{\makexeCJKinactive\circledfont\textcircled{#1}}}
+% \protected\def\circlednum#1{{\makexeCJKinactive\circledfont\textcircled{#1}}}
 
-\newcommand*\circledctr[1]{%
-  \expandafter\circlednum\expandafter{\number\value{#1}}}
-\AddEnumerateCounter*\circledctr\circlednum{1}
+% \newcommand*\circledctr[1]{%
+%   \expandafter\circlednum\expandafter{\number\value{#1}}}
+% \AddEnumerateCounter*\circledctr\circlednum{1}
 
-% 参考自:http://bbs.ctex.org/forum.php?mod=redirect&goto=findpost&ptid=78709&pid=460496&fromuid=40353
+% % 参考自:http://bbs.ctex.org/forum.php?mod=redirect&goto=findpost&ptid=78709&pid=460496&fromuid=40353
 
 %======================插图/tikz图========================
 \usepackage{graphicx,subcaption,wrapfig}    % 图,subcaption含子图功能代替subfig,图文混排
